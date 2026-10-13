@@ -1,0 +1,6 @@
+{
+  "name": "TT-Tutorcen - Your Gateway to Effective Learning",
+  "description": "Educational platform website cloning TT-Tutorcen with interactive tutor search, course carousel, and responsive learning discovery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
