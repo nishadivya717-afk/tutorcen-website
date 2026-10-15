@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Star, Users, Calendar, Award, CheckCircle, Clock } from 'lucide-react';
+import './Modals.css';
 
 export default function CourseDetailModal({ course, onClose, onOpenAuth }) {
   const [enrolled, setEnrolled] = useState(false);
@@ -7,96 +7,81 @@ export default function CourseDetailModal({ course, onClose, onOpenAuth }) {
   if (!course) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-      <div
-        className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden animate-in zoom-in-95 duration-200 max-h-[90vh] flex flex-col"
-        onClick={(e) => e.stopPropagation()}
-      >
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-dialog large" onClick={(e) => e.stopPropagation()}>
+        
         {/* Header Image */}
-        <div className="relative h-56 sm:h-64 w-full bg-gray-900 shrink-0">
+        <div className="course-detail-hero">
           <img
             src={course.image}
             alt={course.title}
-            className="w-full h-full object-cover opacity-90"
+            className="course-detail-img"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+          <div className="course-detail-scrim" />
           
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-full bg-black/40 hover:bg-black/70 text-white transition-colors"
+            className="modal-close-btn overlay-close"
             aria-label="Close modal"
           >
-            <X className="w-5 h-5" />
+            ✕
           </button>
 
-          <div className="absolute bottom-4 left-6 right-6 text-white">
-            <span className="text-xs font-semibold px-2.5 py-1 rounded-md bg-[#00b4d8] text-white uppercase tracking-wider mb-2 inline-block">
+          <div className="course-detail-header-text">
+            <span className="course-detail-tag">
               {course.category}
             </span>
-            <h2 className="text-xl sm:text-2xl font-bold leading-tight drop-shadow-sm">
+            <h2 className="course-detail-title">
               {course.title}
             </h2>
           </div>
         </div>
 
         {/* Content Body */}
-        <div className="p-6 sm:p-8 overflow-y-auto space-y-6">
-          <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-gray-100 text-sm text-gray-600">
-            <div className="flex items-center gap-1.5 text-amber-500 font-bold">
-              <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-              <span>{course.rating}</span>
-              <span className="text-gray-400 font-normal">({course.studentsCount} students)</span>
+        <div className="course-detail-body">
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: '12px', paddingBottom: '16px', borderBottom: '1px solid #f3f4f6', fontSize: '0.88rem', color: '#4b5563', marginBottom: '20px' }}>
+            <div style={{ color: '#d97706', fontWeight: 'bold' }}>
+              ★ {course.rating} <span style={{ color: '#9ca3af', fontWeight: 'normal' }}>({course.studentsCount} students)</span>
             </div>
-            <div className="flex items-center gap-1.5 text-gray-500">
-              <Calendar className="w-4 h-4" />
-              <span>Released {course.date}</span>
+            <div>
+              📅 Released {course.date}
             </div>
-            <div className="flex items-center gap-1.5 text-gray-800 font-medium">
-              <Award className="w-4 h-4 text-[#0088ff]" />
-              <span>{course.instructor}</span>
+            <div style={{ color: '#111827', fontWeight: 600 }}>
+              👨‍🏫 {course.instructor}
             </div>
           </div>
 
-          <div>
-            <h4 className="text-base font-bold text-gray-900 mb-2">About this study field</h4>
-            <p className="text-sm text-gray-600 leading-relaxed">
+          <div style={{ marginBottom: '20px' }}>
+            <h4 style={{ fontSize: '1rem', fontWeight: 800, marginBottom: '6px' }}>About this study field</h4>
+            <p style={{ fontSize: '0.9rem', color: '#4b5563', lineHeight: 1.6 }}>
               {course.description}
             </p>
           </div>
 
-          <div className="bg-gray-50 rounded-2xl p-4 sm:p-5 border border-gray-100 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400">What You'll Learn</h4>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs sm:text-sm text-gray-700">
-              <li className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span>Foundational core concepts &amp; frameworks</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span>1-on-1 personalized review sessions</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span>Real-world case studies &amp; exercises</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span>Verified Certificate of Mastery</span>
-              </li>
+          <div style={{ background: '#f9fafb', padding: '16px 20px', borderRadius: '12px', border: '1px solid #f3f4f6', marginBottom: '24px' }}>
+            <h4 style={{ fontSize: '0.78rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#9ca3af', marginBottom: '10px' }}>
+              What You'll Learn
+            </h4>
+            <ul style={{ listStyle: 'none', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '8px', fontSize: '0.85rem', color: '#374151' }}>
+              <li>✓ Foundational core concepts &amp; frameworks</li>
+              <li>✓ 1-on-1 personalized review sessions</li>
+              <li>✓ Real-world case studies &amp; exercises</li>
+              <li>✓ Verified Certificate of Mastery</li>
             </ul>
           </div>
 
-          <div className="pt-2 flex items-center justify-between gap-4">
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', paddingTop: '10px' }}>
             <div>
-              <div className="text-xs text-gray-500">Total Enrollment Cost</div>
-              <div className="text-2xl font-extrabold text-black">$89 <span className="text-xs text-gray-400 font-normal">or Included with Tutorcen Plus</span></div>
+              <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>Total Enrollment Cost</div>
+              <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--color-black)' }}>
+                $89 <span style={{ fontSize: '0.8rem', color: '#9ca3af', fontWeight: 'normal' }}>or Included with Tutorcen Plus</span>
+              </div>
             </div>
 
             {enrolled ? (
-              <div className="flex items-center gap-2 bg-emerald-50 text-emerald-700 px-5 py-3 rounded-xl font-bold text-sm">
-                <CheckCircle className="w-5 h-5 text-emerald-600" />
-                <span>Enrolled Successfully!</span>
+              <div style={{ background: '#d1fae5', color: '#059669', padding: '12px 20px', borderRadius: '10px', fontWeight: 'bold', fontSize: '0.9rem' }}>
+                ✓ Enrolled Successfully!
               </div>
             ) : (
               <button
@@ -107,13 +92,15 @@ export default function CourseDetailModal({ course, onClose, onOpenAuth }) {
                     onClose();
                   }, 2000);
                 }}
-                className="bg-black hover:bg-gray-800 text-white font-semibold text-sm px-6 py-3.5 rounded-xl shadow-sm transition-all cursor-pointer"
+                className="btn-primary-dark"
+                style={{ padding: '12px 24px', fontSize: '0.9rem' }}
               >
                 Enroll in Field Now
               </button>
             )}
           </div>
         </div>
+
       </div>
     </div>
   );

@@ -1,0 +1,118 @@
+/* CallToActionBanner.css - Pure CSS3 */
+.cta-banner-section {
+  padding-top: 50px;
+  padding-bottom: 60px;
+  background-color: var(--color-white);
+}
+
+.cta-banner-card {
+  position: relative;
+  border-radius: var(--radius-xl);
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(4, 14, 53, 0.3);
+  min-height: 400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cta-bg-contour {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+}
+
+.cta-left-content {
+  padding: 56px 64px;
+  max-width: 580px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cta-headline {
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.18;
+  color: var(--color-white);
+  margin-bottom: 32px;
+}
+
+.btn-get-started-cyan {
+  background-color: #00a8e8;
+  color: var(--color-white);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 14px 32px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 6px 18px rgba(0, 168, 232, 0.3);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+}
+
+.btn-get-started-cyan:hover {
+  background-color: #0096c7;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 168, 232, 0.4);
+}
+
+.cta-right-img-wrap {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 24px;
+}
+
+.cta-art-frame {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  max-height: 380px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.cta-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center right;
+}
+
+@media (max-width: 992px) {
+  .cta-banner-card {
+    flex-direction: column;
+    min-height: auto;
+  }
+  .cta-left-content {
+    padding: 40px 32px;
+    max-width: 100%;
+  }
+  .cta-headline {
+    font-size: 2.2rem;
+  }
+  .cta-right-img-wrap {
+    width: 100%;
+    min-height: 280px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .cta-headline {
+    font-size: 1.8rem;
+  }
+}

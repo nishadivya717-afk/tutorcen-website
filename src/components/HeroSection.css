@@ -1,0 +1,184 @@
+/* HeroSection.css - Pure CSS3 */
+.hero-section {
+  padding-top: 40px;
+  padding-bottom: 70px;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-gray-100);
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+/* Left Content */
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 10;
+}
+
+.hero-kicker {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #374151;
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+  color: var(--color-black);
+  margin-bottom: 36px;
+  text-wrap: balance;
+}
+
+.hero-tags {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--color-gray-500);
+}
+
+.hero-tags-label {
+  font-weight: 600;
+  color: var(--color-gray-700);
+}
+
+.hero-tag-btn {
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  color: #4b5563;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.hero-tag-btn:hover {
+  background-color: #e5e7eb;
+  color: var(--color-black);
+}
+
+/* Right Visual */
+.hero-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-card-frame {
+  position: relative;
+  width: 100%;
+  max-width: 530px;
+  height: 520px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+/* Top half: cream background with subtle topo waves */
+.hero-bg-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background-color: #fdfaf2;
+  overflow: hidden;
+}
+
+.hero-waves-svg {
+  width: 100%;
+  height: 100%;
+  opacity: 0.55;
+}
+
+/* Bottom half: solid warm yellow-orange block */
+.hero-bg-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background-color: var(--color-orange);
+}
+
+/* Tutor Image */
+.hero-img-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.hero-tutor-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* Active Mentors Floating Badge */
+.hero-floating-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(4px);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-dark);
+}
+
+.hero-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10b981;
+}
+
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  .hero-right {
+    justify-content: center;
+  }
+  .hero-card-frame {
+    max-width: 460px;
+    height: 460px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  .hero-card-frame {
+    height: 380px;
+  }
+}

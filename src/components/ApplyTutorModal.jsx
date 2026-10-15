@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, CheckCircle2, GraduationCap, DollarSign, BookOpen, Send } from 'lucide-react';
+import './Modals.css';
 
 export default function ApplyTutorModal({ isOpen, onClose }) {
   const [name, setName] = useState('');
@@ -20,122 +20,101 @@ export default function ApplyTutorModal({ isOpen, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-      <div
-        className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-gray-100 p-6 sm:p-8 overflow-hidden animate-in zoom-in-95 duration-200"
-        onClick={(e) => e.stopPropagation()}
-      >
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-dialog" onClick={(e) => e.stopPropagation()}>
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-full text-gray-400 hover:text-black hover:bg-gray-100 transition-colors"
+          className="modal-close-btn"
           aria-label="Close modal"
         >
-          <X className="w-5 h-5" />
+          ✕
         </button>
 
         {submitted ? (
-          <div className="py-12 text-center flex flex-col items-center">
-            <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4">
-              <CheckCircle2 className="w-10 h-10" />
+          <div style={{ padding: '40px 0', textAlign: 'center' }}>
+            <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: '#d1fae5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', fontSize: '1.8rem', fontWeight: 'bold' }}>
+              ✓
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '8px' }}>
               Application Submitted!
             </h3>
-            <p className="text-sm text-gray-600 max-w-sm">
+            <p style={{ fontSize: '0.9rem', color: '#6b7280' }}>
               Thank you, {name}. Our academic review team will verify your credentials and reach out within 24–48 hours.
             </p>
           </div>
         ) : (
           <>
-            <div className="mb-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-50 text-[#0096c7] text-xs font-bold mb-2">
-                <GraduationCap className="w-3.5 h-3.5" />
+            <div style={{ marginBottom: '24px' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 700, padding: '4px 10px', background: '#e0f2fe', color: '#0096c7', borderRadius: '999px', display: 'inline-block', marginBottom: '8px' }}>
                 Join Tutorcen Mentor Network
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+              </span>
+              <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--color-black)' }}>
                 Apply to become a tutor
               </h2>
-              <p className="text-sm text-gray-500 mt-1">
+              <p style={{ fontSize: '0.88rem', color: '#6b7280', marginTop: '4px' }}>
                 Share your knowledge, set your own schedule, and earn flexibly with global students.
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1.5">
-                  Full Name
-                </label>
+            <form onSubmit={handleSubmit}>
+              <div className="modal-form-group">
+                <label className="modal-label">Full Name</label>
                 <input
                   type="text"
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Dr. Jordan Reed"
-                  className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-black transition-all"
+                  className="modal-input"
                 />
               </div>
 
-              <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1.5">
-                  Email Address
-                </label>
+              <div className="modal-form-group">
+                <label className="modal-label">Email Address</label>
                 <input
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="jordan.reed@university.edu"
-                  className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-black transition-all"
+                  className="modal-input"
                 />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1.5">
-                    Primary Subject Area
-                  </label>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                <div className="modal-form-group">
+                  <label className="modal-label">Primary Subject</label>
                   <select
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
-                    className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-black transition-all"
+                    className="modal-input"
                   >
                     <option value="Data Science & AI">Data Science &amp; AI</option>
                     <option value="Product Management">Product Management</option>
                     <option value="Mathematics & Geometry">Mathematics &amp; Geometry</option>
                     <option value="Psychology & Well-Being">Psychology &amp; Well-Being</option>
                     <option value="Physics & Engineering">Physics &amp; Engineering</option>
-                    <option value="Computer Science">Computer Science</option>
                   </select>
                 </div>
 
-                <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1.5">
-                    Desired Hourly Rate (USD)
-                  </label>
-                  <div className="relative">
-                    <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 font-bold text-sm">$</span>
-                    <input
-                      type="number"
-                      required
-                      min="20"
-                      max="300"
-                      value={rate}
-                      onChange={(e) => setRate(e.target.value)}
-                      className="w-full pl-8 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:bg-white focus:border-black transition-all"
-                    />
-                  </div>
+                <div className="modal-form-group">
+                  <label className="modal-label">Desired Rate (USD/hr)</label>
+                  <input
+                    type="number"
+                    required
+                    min="20"
+                    max="300"
+                    value={rate}
+                    onChange={(e) => setRate(e.target.value)}
+                    className="modal-input"
+                  />
                 </div>
               </div>
 
-              <div className="pt-2">
-                <button
-                  type="submit"
-                  className="w-full bg-black hover:bg-gray-800 text-white font-semibold text-sm py-3.5 rounded-xl transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <Send className="w-4 h-4" />
-                  <span>Submit Tutor Application</span>
-                </button>
-              </div>
+              <button type="submit" className="modal-submit-btn">
+                <span>Submit Tutor Application</span>
+                <span>→</span>
+              </button>
             </form>
           </>
         )}

@@ -26,7 +26,6 @@ export default function App() {
     setSearchQuery(query);
     setActiveLocation(location);
 
-    // Smoothly scroll down to courses section to show results
     const coursesEl = document.getElementById('courses');
     if (coursesEl) {
       coursesEl.scrollIntoView({ behavior: 'smooth' });
@@ -48,7 +47,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 flex flex-col font-sans selection:bg-cyan-100 selection:text-cyan-900">
+    <div className="app-layout">
       {/* 1. Header Navigation Bar */}
       <Navbar
         onOpenAuth={() => setAuthModalOpen(true)}
@@ -57,7 +56,7 @@ export default function App() {
       />
 
       {/* Main Content Areas From Top to Bottom */}
-      <main className="flex-1">
+      <main className="app-main">
         {/* 2. Hero Section */}
         <HeroSection
           onSearch={handleSearch}

@@ -1,0 +1,307 @@
+/* RedefineExperienceSection.css - Pure CSS3 */
+.redefine-section {
+  padding-top: 80px;
+  padding-bottom: 90px;
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+
+.redefine-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 40px;
+}
+
+.redefine-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.18;
+  color: var(--color-black);
+}
+
+/* Tabs */
+.redefine-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 64px;
+}
+
+.redefine-tab-btn {
+  padding: 10px 22px;
+  border-radius: var(--radius-md);
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  background-color: var(--color-white);
+  color: var(--color-gray-700);
+  border: 1.5px solid #d1d5db;
+}
+
+.redefine-tab-btn:hover {
+  border-color: #4b5563;
+  color: var(--color-black);
+}
+
+.redefine-tab-btn.active {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Content Area */
+.redefine-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Left Graphic */
+.redefine-art-stage {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.redefine-sun-circle {
+  position: absolute;
+  width: 270px;
+  height: 270px;
+  border-radius: 50%;
+  background-color: var(--color-orange);
+  right: 25px;
+  top: 45px;
+  z-index: 0;
+}
+
+/* Orbiting badges */
+.orbit-badge {
+  position: absolute;
+  z-index: 20;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  border: 1.5px solid #c7d2fe;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4338ca;
+  transition: transform 0.2s ease;
+}
+
+.orbit-badge:hover {
+  transform: scale(1.12);
+}
+
+.badge-atom {
+  top: 45px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+}
+
+.badge-bulb {
+  top: 0;
+  left: 140px;
+  width: 44px;
+  height: 44px;
+}
+
+.badge-math {
+  top: 30px;
+  right: 15px;
+  width: 50px;
+  height: 50px;
+}
+
+.badge-globe {
+  top: 175px;
+  right: 0;
+  width: 44px;
+  height: 44px;
+}
+
+.badge-flask {
+  top: 205px;
+  left: 10px;
+  width: 44px;
+  height: 44px;
+}
+
+.math-matrix {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 4px;
+  border: 1px solid #c7d2fe;
+  border-radius: 3px;
+}
+
+/* Mother & Daughter */
+.redefine-photo-wrap {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.redefine-photo-img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.12));
+}
+
+/* Floating Metric Card */
+.metric-float-card {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  z-index: 30;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--color-gray-100);
+  max-width: 220px;
+}
+
+.metric-icon-box {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.metric-value-text {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--color-black);
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.metric-progress-track {
+  width: 100%;
+  height: 7px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: var(--color-black);
+  display: flex;
+  margin-bottom: 6px;
+}
+
+.progress-seg-yellow {
+  width: 65%;
+  height: 100%;
+  background-color: var(--color-orange);
+}
+
+.progress-seg-black {
+  width: 35%;
+  height: 100%;
+  background-color: var(--color-black);
+}
+
+.metric-sub-caption {
+  font-size: 0.72rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* Right Text List */
+.redefine-title-right {
+  font-size: 2.3rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.22;
+  color: var(--color-black);
+  margin-bottom: 32px;
+}
+
+.redefine-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.redefine-feature-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.feature-icon-glyph {
+  width: 26px;
+  height: 26px;
+  color: var(--color-black);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.feature-heading-text {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-black);
+  margin-bottom: 6px;
+}
+
+.feature-body-text {
+  font-size: 0.92rem;
+  color: var(--color-gray-600);
+  line-height: 1.55;
+}
+
+@media (max-width: 992px) {
+  .redefine-content-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .redefine-title {
+    font-size: 2.2rem;
+  }
+  .redefine-title-right {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .redefine-title {
+    font-size: 1.8rem;
+  }
+  .redefine-title-right {
+    font-size: 1.6rem;
+  }
+  .metric-float-card {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin-top: 16px;
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,142 @@
+/* CourseSection.css - Pure CSS3 */
+.course-section {
+  padding-top: 60px;
+  padding-bottom: 70px;
+  background-color: var(--color-white);
+  position: relative;
+}
+
+.course-header-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 36px;
+  gap: 16px;
+}
+
+.course-section-title {
+  font-size: 2.3rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--color-black);
+}
+
+.course-actions-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.course-filter-badge {
+  font-size: 0.8rem;
+  color: #4b5563;
+  background-color: #f3f4f6;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.course-see-all-link {
+  color: var(--color-blue);
+  font-weight: 700;
+  font-size: 1rem;
+  transition: color 0.15s ease;
+  white-space: nowrap;
+}
+
+.course-see-all-link:hover {
+  color: var(--color-blue-hover);
+  text-decoration: underline;
+}
+
+/* Carousel Slider */
+.carousel-wrapper {
+  position: relative;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1f2937;
+  z-index: 20;
+  transition: all 0.2s ease;
+}
+
+.carousel-arrow:hover {
+  background-color: #fafafa;
+  transform: translateY(-50%) scale(1.06);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  color: var(--color-black);
+}
+
+.carousel-arrow.left {
+  left: -24px;
+}
+
+.carousel-arrow.right {
+  right: -24px;
+}
+
+.carousel-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* Indicator dots */
+.carousel-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 32px;
+}
+
+.carousel-dot {
+  height: 8px;
+  border-radius: var(--radius-full);
+  background-color: #e5e7eb;
+  transition: all 0.25s ease;
+  width: 8px;
+}
+
+.carousel-dot.active {
+  width: 24px;
+  background-color: var(--color-black);
+}
+
+@media (max-width: 1100px) {
+  .carousel-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .carousel-arrow.left {
+    left: -12px;
+  }
+  .carousel-arrow.right {
+    right: -12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .course-section-title {
+    font-size: 1.8rem;
+  }
+  .carousel-grid {
+    grid-template-columns: 1fr;
+  }
+  .carousel-arrow {
+    display: none;
+  }
+}

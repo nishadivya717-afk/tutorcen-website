@@ -1,0 +1,71 @@
+/* CourseCard.css - Pure CSS3 */
+.course-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  width: 100%;
+}
+
+.course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+}
+
+.course-card-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background-color: var(--color-gray-100);
+  overflow: hidden;
+}
+
+.course-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.course-card:hover .course-card-img {
+  transform: scale(1.04);
+}
+
+.course-card-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.course-card-date {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-gray-500);
+  margin-bottom: 8px;
+}
+
+.course-card-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-black);
+  line-height: 1.35;
+  margin-bottom: 12px;
+  transition: color 0.15s ease;
+}
+
+.course-card:hover .course-card-title {
+  color: var(--color-blue);
+}
+
+.course-card-instructor {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--color-gray-600);
+}

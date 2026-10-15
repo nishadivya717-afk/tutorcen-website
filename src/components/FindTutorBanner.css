@@ -1,0 +1,123 @@
+/* FindTutorBanner.css - Pure CSS3 */
+.find-tutor-banner-section {
+  padding-top: 50px;
+  padding-bottom: 60px;
+  background-color: var(--color-white);
+}
+
+.find-tutor-banner-card {
+  position: relative;
+  border-radius: var(--radius-xl);
+  background-color: var(--color-green);
+  color: var(--color-white);
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(14, 59, 38, 0.2);
+  min-height: 400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.find-tutor-left-content {
+  padding: 56px 64px;
+  max-width: 580px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.find-tutor-ribbon-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 4px;
+  background-color: var(--color-orange);
+  color: var(--color-black);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 24px;
+  width: fit-content;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.find-tutor-heading {
+  font-size: 2.7rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.18;
+  color: var(--color-white);
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.find-tutor-heading-dashes {
+  position: absolute;
+  top: 4px;
+  right: 60px;
+  opacity: 0.85;
+}
+
+.btn-find-tutor-dark {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 12px 26px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-find-tutor-dark:hover {
+  background-color: #1a1a1a;
+  transform: translateY(-2px);
+}
+
+.find-tutor-right-img-wrap {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  min-height: 400px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.find-tutor-student-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+  mix-blend-mode: lighten;
+}
+
+@media (max-width: 992px) {
+  .find-tutor-banner-card {
+    flex-direction: column;
+    min-height: auto;
+  }
+  .find-tutor-left-content {
+    padding: 40px 32px;
+    max-width: 100%;
+  }
+  .find-tutor-heading {
+    font-size: 2.2rem;
+  }
+  .find-tutor-right-img-wrap {
+    width: 100%;
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 640px) {
+  .find-tutor-heading {
+    font-size: 1.8rem;
+  }
+}

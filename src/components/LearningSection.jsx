@@ -1,143 +1,136 @@
 import React from 'react';
-import { CheckCircle2, Users, Calendar, ShieldCheck, ArrowRight } from 'lucide-react';
+import './LearningSection.css';
 
 export default function LearningSection({ onOpenAuth, onNavigateSection }) {
   return (
-    <section id="elevate" className="py-16 sm:py-24 bg-[#fafbfc] border-t border-gray-100 overflow-hidden relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+    <section id="elevate" className="learning-section">
+      <div className="container">
+        <div className="learning-grid">
           
           {/* Left Graphic Element: Yellow Sunburst + Handwritten "NEW!" annotation + Clipboard graphic */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-start">
-            <div className="relative w-full max-w-[420px] h-[340px] flex items-center justify-center">
-              
-              {/* Handwritten "NEW!" Callout & Hand-drawn Arrow */}
-              <div className="absolute top-2 left-6 sm:left-10 z-20 flex flex-col items-center">
-                <span className="handwritten text-3xl sm:text-4xl font-bold text-black rotate-[-12deg] tracking-wider select-none">
-                  NEW!
-                </span>
-                {/* Hand-drawn style arrow pointing down to sunburst */}
-                <svg
-                  className="w-8 h-8 text-black -mt-1 ml-3 rotate-[10deg]"
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 4 C16 14, 22 22, 26 32 M26 32 L16 30 M26 32 L28 22"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-
-              {/* Yellow Decorative Sunburst / Starburst Graphic */}
-              <div className="relative z-10 w-48 h-48 sm:w-56 sm:h-56 flex items-center justify-center animate-pulse duration-1000">
-                <svg
-                  viewBox="0 0 100 100"
-                  className="w-full h-full drop-shadow-md text-[#fca311]"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  {/* Multi-point bold starburst */}
-                  <polygon points="
-                    50,0 59,25 85,15 75,38 100,50 75,62 85,85 59,75 50,100 
-                    41,75 15,85 25,62 0,50 25,38 15,15 41,25
-                  " />
-                </svg>
-
-                {/* Inner badge symbol */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
-                  <span className="text-white font-extrabold text-sm uppercase tracking-wider drop-shadow-sm">
-                    Interactive
-                  </span>
-                  <span className="text-black font-extrabold text-lg sm:text-xl drop-shadow-sm">
-                    Live 1:1
-                  </span>
-                </div>
-              </div>
-
-              {/* Decorative study clipboard / pad card graphic */}
-              <div className="absolute right-2 sm:right-6 bottom-4 w-44 sm:w-48 bg-white rounded-2xl shadow-xl border border-gray-100 p-4 rotate-3 z-10">
-                {/* Binder Clip */}
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-4 bg-gray-800 rounded-sm flex items-center justify-center">
-                  <div className="w-5 h-1.5 border border-white/60 rounded-xs" />
-                </div>
-                <div className="pt-2 space-y-2">
-                  <div className="flex items-center gap-2">
-                    <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
-                      <CheckCircle2 className="w-3.5 h-3.5" />
-                    </div>
-                    <span className="text-xs font-bold text-gray-800">Verified Tutor</span>
-                  </div>
-                  <div className="w-full h-1.5 bg-gray-100 rounded-full" />
-                  <div className="w-3/4 h-1.5 bg-gray-100 rounded-full" />
-                  <div className="pt-1 flex items-center justify-between text-[11px] text-gray-400 font-medium">
-                    <span>Active Now</span>
-                    <span className="text-emerald-600 font-bold">100% Match</span>
-                  </div>
-                </div>
-              </div>
-
+          <div className="learning-art-wrap">
+            
+            {/* Handwritten "NEW!" annotation */}
+            <div className="learning-new-annotation">
+              <span className="learning-new-text">NEW!</span>
+              <svg
+                className="learning-new-arrow"
+                viewBox="0 0 40 40"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 4 C16 14, 22 22, 26 32 M26 32 L16 30 M26 32 L28 22"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </div>
+
+            {/* Yellow Decorative Sunburst / Starburst Graphic */}
+            <div className="learning-sunburst-wrap">
+              <svg
+                viewBox="0 0 100 100"
+                className="learning-sunburst-svg"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <polygon points="
+                  50,0 59,25 85,15 75,38 100,50 75,62 85,85 59,75 50,100 
+                  41,75 15,85 25,62 0,50 25,38 15,15 41,25
+                " />
+              </svg>
+              <div className="learning-sunburst-label">
+                <span className="sunburst-tag">Interactive</span>
+                <span className="sunburst-live">Live 1:1</span>
+              </div>
+            </div>
+
+            {/* Decorative Clipboard Card */}
+            <div className="learning-clipboard-card">
+              <div className="clipboard-clip">
+                <div className="clipboard-clip-wire" />
+              </div>
+              <div className="clipboard-content">
+                <div className="clipboard-row-top">
+                  <div className="clipboard-check-icon">✓</div>
+                  <span className="clipboard-verified-text">Verified Tutor</span>
+                </div>
+                <div className="clipboard-bar-full" />
+                <div className="clipboard-bar-half" />
+                <div className="clipboard-footer">
+                  <span>Active Now</span>
+                  <span style={{ color: '#059669', fontWeight: 700 }}>100% Match</span>
+                </div>
+              </div>
+            </div>
+
           </div>
 
           {/* Right Content: Headline & Pillars */}
-          <div className="lg:col-span-7">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-black tracking-tight leading-[1.1] mb-6">
+          <div>
+            <h2 className="learning-headline">
               Elevate Your Learning<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-black via-gray-800 to-gray-600">
-                with Tutorcen
-              </span>
+              <span className="learning-headline-sub">with Tutorcen</span>
             </h2>
 
-            <p className="text-base sm:text-lg text-gray-600 max-w-xl mb-8 leading-relaxed">
+            <p className="learning-description">
               Connect with vetted subject-matter experts, accelerate your academic breakthroughs, 
               and explore tailored learning roadmaps designed for your personal goals.
             </p>
 
-            {/* Value Pillars Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
-              <div className="flex items-start gap-3.5 p-4 rounded-xl bg-white border border-gray-100 shadow-sm">
-                <div className="p-2.5 rounded-lg bg-blue-50 text-[#0088ff] shrink-0">
-                  <Users className="w-5 h-5" />
+            <div className="learning-pillars-grid">
+              <div className="pillar-card">
+                <div className="pillar-icon-box">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                  </svg>
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-gray-900 mb-1">Top 1% Vetted Mentors</h4>
-                  <p className="text-xs text-gray-500 leading-relaxed">
+                  <h4 className="pillar-title">Top 1% Vetted Mentors</h4>
+                  <p className="pillar-desc">
                     Rigorous screening ensures every tutor brings verified subject mastery and proven pedagogy.
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3.5 p-4 rounded-xl bg-white border border-gray-100 shadow-sm">
-                <div className="p-2.5 rounded-lg bg-emerald-50 text-emerald-600 shrink-0">
-                  <Calendar className="w-5 h-5" />
+              <div className="pillar-card">
+                <div className="pillar-icon-box green">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                  </svg>
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-gray-900 mb-1">Flexible Scheduling</h4>
-                  <p className="text-xs text-gray-500 leading-relaxed">
+                  <h4 className="pillar-title">Flexible Scheduling</h4>
+                  <p className="pillar-desc">
                     Book sessions around your calendar with instant calendar sync and flexible rescheduling.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="learning-cta-group">
               <button
                 onClick={onOpenAuth}
-                className="bg-black hover:bg-gray-800 active:scale-95 text-white font-semibold text-sm sm:text-base px-7 py-3.5 rounded-xl shadow-sm transition-all flex items-center gap-2 cursor-pointer"
+                className="btn-primary-dark"
               >
                 <span>Get Started Now</span>
-                <ArrowRight className="w-4 h-4" />
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
               </button>
               <button
                 onClick={() => onNavigateSection('courses')}
-                className="bg-white hover:bg-gray-50 border border-gray-200 text-gray-900 font-semibold text-sm sm:text-base px-6 py-3.5 rounded-xl transition-all cursor-pointer"
+                className="btn-secondary-white"
               >
                 Browse All Fields
               </button>
@@ -146,7 +139,6 @@ export default function LearningSection({ onOpenAuth, onNavigateSection }) {
           </div>
 
         </div>
-
       </div>
     </section>
   );

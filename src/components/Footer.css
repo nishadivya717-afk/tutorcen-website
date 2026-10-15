@@ -1,0 +1,164 @@
+/* Footer.css - Pure CSS3 */
+.site-footer {
+  background-color: #f5f6f8;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding-top: 70px;
+  padding-bottom: 40px;
+  color: var(--color-dark);
+}
+
+.footer-top-grid {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr 1fr 1.2fr 1.2fr;
+  gap: 36px;
+  padding-bottom: 60px;
+}
+
+/* Brand Column */
+.footer-brand-wrap {
+  padding-right: 24px;
+}
+
+.footer-logo-lockup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.footer-logo-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--color-cyan), var(--color-cyan-hover));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.footer-logo-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--color-black);
+}
+
+.footer-desc-text {
+  font-size: 0.9rem;
+  color: #4b5563;
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+/* Category Columns */
+.footer-col-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-black);
+  margin-bottom: 4px;
+}
+
+.footer-title-bar {
+  width: 32px;
+  height: 3px;
+  background-color: var(--color-cyan);
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+
+.footer-links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-link-btn {
+  font-size: 0.88rem;
+  color: #4b5563;
+  transition: color 0.15s ease;
+  text-align: left;
+}
+
+.footer-link-btn:hover {
+  color: var(--color-black);
+}
+
+/* Social Buttons */
+.footer-social-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.social-circle-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.social-circle-btn:hover {
+  background-color: var(--color-gray-700);
+  transform: translateY(-2px);
+}
+
+/* Products Divider */
+.footer-products-divider {
+  position: relative;
+  padding: 32px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.divider-line {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+}
+
+.divider-line-inner {
+  width: 100%;
+  border-top: 1px solid #d1d5db;
+}
+
+.divider-label-pill {
+  position: relative;
+  background-color: #f5f6f8;
+  padding: 0 24px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #374151;
+}
+
+/* Bottom Strip */
+.footer-bottom-strip {
+  padding-top: 24px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+@media (max-width: 992px) {
+  .footer-top-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-top-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}

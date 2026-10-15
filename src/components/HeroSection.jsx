@@ -1,39 +1,36 @@
 import React from 'react';
 import SearchBar from './SearchBar.jsx';
+import './HeroSection.css';
 
 export default function HeroSection({ onSearch, activeLocation, activeQuery }) {
   return (
-    <section className="relative overflow-hidden bg-white pt-6 pb-16 lg:pt-12 lg:pb-24 border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+    <section className="hero-section">
+      <div className="container">
+        <div className="hero-grid">
           
-          {/* Left Column: Headings & Search */}
-          <div className="lg:col-span-6 xl:col-span-6 flex flex-col justify-center z-10">
-            {/* Eyebrow kicker */}
-            <p className="text-xs sm:text-sm font-semibold tracking-wider text-gray-700 uppercase mb-4 sm:mb-6">
+          {/* Left Column: Heading and Search Bar */}
+          <div className="hero-left">
+            <p className="hero-kicker">
               EMPOWERING STUDENTS TO EXCEL
             </p>
 
-            {/* Main bold title */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-extrabold text-black tracking-tight leading-[1.12] mb-8 sm:mb-10 text-balance">
+            <h1 className="hero-title">
               Your Gateway to<br />Effective Learning
             </h1>
 
-            {/* Search Bar */}
             <SearchBar
               onSearch={onSearch}
               activeLocation={activeLocation}
               activeQuery={activeQuery}
             />
 
-            {/* Popular search tags for quick browsing */}
-            <div className="mt-6 flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-500">
-              <span className="font-medium text-gray-700">Popular:</span>
+            <div className="hero-tags">
+              <span className="hero-tags-label">Popular:</span>
               {['Data Science', 'Product Management', 'Fractal Geometry', 'Python', 'SAT Prep'].map((tag) => (
                 <button
                   key={tag}
                   onClick={() => onSearch({ query: tag, location: '' })}
-                  className="px-2.5 py-1 rounded-md bg-gray-50 hover:bg-gray-100 text-gray-600 hover:text-black border border-gray-200/60 transition-colors cursor-pointer text-xs"
+                  className="hero-tag-btn"
                 >
                   {tag}
                 </button>
@@ -41,14 +38,14 @@ export default function HeroSection({ onSearch, activeLocation, activeQuery }) {
             </div>
           </div>
 
-          {/* Right Column: Hero Graphic Section */}
-          <div className="lg:col-span-6 xl:col-span-6 relative flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[500px] lg:max-w-[540px] h-[440px] sm:h-[500px] lg:h-[540px] rounded-2xl overflow-hidden shadow-sm">
+          {/* Right Column: Hero Framing with split cream wavy pattern & yellow-orange background */}
+          <div className="hero-right">
+            <div className="hero-card-frame">
               
-              {/* Top Half: Pale cream background with wavy contour lines */}
-              <div className="absolute top-0 left-0 right-0 h-1/2 bg-[#fdfaf2] overflow-hidden">
+              {/* Top half cream background with wave contours */}
+              <div className="hero-bg-top">
                 <svg
-                  className="w-full h-full opacity-45"
+                  className="hero-waves-svg"
                   viewBox="0 0 500 270"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -63,25 +60,26 @@ export default function HeroSection({ onSearch, activeLocation, activeQuery }) {
                 </svg>
               </div>
 
-              {/* Bottom Half: Solid warm yellow-orange background */}
-              <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-[#fca311]" />
+              {/* Bottom half solid warm yellow-orange block */}
+              <div className="hero-bg-bottom" />
 
-              {/* Tutor Photo with teal shirt & laptop */}
-              <div className="absolute inset-0 flex items-end justify-center pointer-events-none">
+              {/* Tutor Photo with teal shirt and laptop */}
+              <div className="hero-img-wrap">
                 <img
                   src="/src/assets/images/hero_tutor_teal_laptop_1791876895337.jpg"
                   alt="Student tutor with laptop"
-                  className="w-full h-full object-cover object-top mix-blend-multiply sm:mix-blend-normal contrast-[1.05]"
+                  className="hero-tutor-img"
                   referrerPolicy="no-referrer"
                   loading="eager"
                 />
               </div>
 
-              {/* Subtle top gloss & decorative badges matching educational style */}
-              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3.5 py-1.5 rounded-full shadow-sm border border-gray-100 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-xs font-semibold text-gray-800">1,200+ Active Mentors</span>
+              {/* Floating verified mentor badge */}
+              <div className="hero-floating-badge">
+                <span className="hero-badge-dot" />
+                <span>1,200+ Active Mentors</span>
               </div>
+
             </div>
           </div>
 

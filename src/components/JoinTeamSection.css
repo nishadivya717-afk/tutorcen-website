@@ -1,0 +1,201 @@
+/* JoinTeamSection.css - Pure CSS3 */
+.join-team-section {
+  padding-top: 80px;
+  padding-bottom: 90px;
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+
+.join-team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 50px;
+  align-items: center;
+}
+
+/* Left Content */
+.join-team-headline {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--color-black);
+  margin-bottom: 22px;
+}
+
+.join-team-description {
+  font-size: 1rem;
+  color: var(--color-gray-600);
+  line-height: 1.6;
+  max-width: 500px;
+  margin-bottom: 32px;
+}
+
+.btn-apply-dark {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 14px 26px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-apply-dark:hover {
+  background-color: var(--color-gray-800);
+  transform: translateY(-2px);
+}
+
+/* Right Cards */
+.join-team-cards-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 20px;
+  max-width: 100%;
+}
+
+.tutor-card-1 {
+  width: 190px;
+  height: 270px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background-color: #93a5cf;
+  box-shadow: var(--shadow-md);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.tutor-card-1:hover {
+  transform: translateY(-4px);
+}
+
+.tutor-card-2-center {
+  position: relative;
+  width: 230px;
+  height: 350px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background-color: #fbc2eb;
+  box-shadow: var(--shadow-lg);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.tutor-card-2-center:hover {
+  transform: translateY(-6px);
+}
+
+.tutor-card-3 {
+  width: 190px;
+  height: 270px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background-color: #f7a399;
+  box-shadow: var(--shadow-md);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.tutor-card-3:hover {
+  transform: translateY(-4px);
+}
+
+.tutor-card-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* Rosette Badge */
+.rosette-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 20;
+  width: 62px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rosette-svg {
+  width: 100%;
+  height: 100%;
+  color: #059669;
+  filter: drop-shadow(0 4px 8px rgba(5, 150, 105, 0.3));
+}
+
+.rosette-text-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.rosette-pct {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--color-white);
+  line-height: 1;
+}
+
+.rosette-label {
+  font-size: 0.45rem;
+  font-weight: 800;
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+@media (max-width: 1024px) {
+  .join-team-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .join-team-cards-row {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .join-team-headline {
+    font-size: 2.2rem;
+  }
+  .join-team-cards-row {
+    gap: 10px;
+  }
+  .tutor-card-1, .tutor-card-3 {
+    width: 100px;
+    height: 150px;
+    border-radius: var(--radius-md);
+  }
+  .tutor-card-2-center {
+    width: 130px;
+    height: 200px;
+    border-radius: var(--radius-md);
+  }
+  .rosette-badge {
+    width: 44px;
+    height: 44px;
+    top: 6px;
+    left: 6px;
+  }
+  .rosette-pct {
+    font-size: 0.55rem;
+  }
+  .rosette-label {
+    font-size: 0.35rem;
+  }
+}

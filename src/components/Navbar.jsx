@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Globe, ChevronDown, Menu, X, BookOpen, GraduationCap, Award, Compass, Sparkles } from 'lucide-react';
+import './Navbar.css';
 
 export default function Navbar({ onOpenAuth, onOpenApply, onNavigateSection }) {
   const [learnDropdownOpen, setLearnDropdownOpen] = useState(false);
@@ -10,7 +10,6 @@ export default function Navbar({ onOpenAuth, onOpenApply, onNavigateSection }) {
   const learnRef = useRef(null);
   const langRef = useRef(null);
 
-  // Close dropdowns on outside click
   useEffect(() => {
     function handleClickOutside(e) {
       if (learnRef.current && !learnRef.current.contains(e.target)) {
@@ -34,115 +33,113 @@ export default function Navbar({ onOpenAuth, onOpenApply, onNavigateSection }) {
   ];
 
   const learnCategories = [
-    { title: 'Academic Tutoring', desc: 'Math, Physics, Chemistry, Biology & K-12 subjects', icon: BookOpen },
-    { title: 'Tech & Data Science', desc: 'Coding, Python, AI, Machine Learning & Analytics', icon: Sparkles },
-    { title: 'Business & Management', desc: 'Product, Marketing, Leadership & Finance', icon: Award },
-    { title: 'Test Preparation', desc: 'SAT, ACT, GRE, GMAT & IELTS targeted prep', icon: GraduationCap },
-    { title: 'Languages & Humanities', desc: 'Spanish, French, English, History & Literature', icon: Compass }
+    { title: 'Academic Tutoring', desc: 'Math, Physics, Chemistry, Biology & K-12 subjects' },
+    { title: 'Tech & Data Science', desc: 'Coding, Python, AI, Machine Learning & Analytics' },
+    { title: 'Business & Management', desc: 'Product, Marketing, Leadership & Finance' },
+    { title: 'Test Preparation', desc: 'SAT, ACT, GRE, GMAT & IELTS targeted prep' },
+    { title: 'Languages & Humanities', desc: 'Spanish, French, English, History & Literature' }
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+    <header className="navbar-header">
+      <div className="container">
+        <div className="navbar-inner">
           
-          {/* Logo Area */}
-          <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#00b4d8] to-[#0096c7] flex items-center justify-center text-white shadow-sm shadow-[#00b4d8]/20">
+          {/* Tutorcen Logo */}
+          <div className="navbar-brand" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <div className="navbar-logo-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 3V21M7 8H17" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                 <circle cx="17" cy="6" r="2.5" fill="#90e0ef" />
               </svg>
             </div>
-            <span className="text-2xl font-bold tracking-tight text-gray-950 font-sans">
-              tutorcen
-            </span>
+            <span className="navbar-logo-text">tutorcen</span>
           </div>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-8 text-[15px] font-medium text-gray-800">
+          {/* Navigation Links */}
+          <nav className="navbar-nav">
             <button
               onClick={() => onNavigateSection('courses')}
-              className="hover:text-black transition-colors cursor-pointer"
+              className="nav-link"
             >
               Find tutors
             </button>
 
             <button
               onClick={() => onNavigateSection('support')}
-              className="hover:text-black transition-colors cursor-pointer"
+              className="nav-link"
             >
               Support
             </button>
 
             {/* Learn Dropdown */}
-            <div className="relative" ref={learnRef}>
+            <div className="dropdown-container" ref={learnRef}>
               <button
                 onClick={() => setLearnDropdownOpen(!learnDropdownOpen)}
-                className="flex items-center gap-1.5 hover:text-black transition-colors cursor-pointer py-2"
+                className="nav-link"
                 aria-expanded={learnDropdownOpen}
               >
                 <span>Learn</span>
-                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${learnDropdownOpen ? 'rotate-180' : ''}`} />
+                <svg className={`dropdown-arrow ${learnDropdownOpen ? 'open' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
               </button>
 
               {learnDropdownOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 bg-white rounded-2xl shadow-xl border border-gray-100 p-2.5 animate-in fade-in slide-in-from-top-2 duration-150 z-50">
-                  <div className="text-xs font-semibold uppercase tracking-wider text-gray-400 px-3 py-2">
-                    Browse Learning Paths
-                  </div>
-                  {learnCategories.map((cat, idx) => {
-                    const IconComponent = cat.icon;
-                    return (
-                      <button
-                        key={idx}
-                        onClick={() => {
-                          setLearnDropdownOpen(false);
-                          onNavigateSection('courses');
-                        }}
-                        className="w-full text-left flex items-start gap-3 p-2.5 rounded-xl hover:bg-gray-50 transition-colors group cursor-pointer"
-                      >
-                        <div className="p-2 rounded-lg bg-cyan-50 text-[#0096c7] group-hover:bg-[#0096c7] group-hover:text-white transition-colors shrink-0">
-                          <IconComponent className="w-4 h-4" />
-                        </div>
-                        <div>
-                          <div className="text-sm font-semibold text-gray-900 group-hover:text-[#0096c7] transition-colors">
-                            {cat.title}
-                          </div>
-                          <div className="text-xs text-gray-500 line-clamp-1">
-                            {cat.desc}
-                          </div>
-                        </div>
-                      </button>
-                    );
-                  })}
+                <div className="dropdown-menu">
+                  <div className="dropdown-heading">Browse Learning Paths</div>
+                  {learnCategories.map((cat, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => {
+                        setLearnDropdownOpen(false);
+                        onNavigateSection('courses');
+                      }}
+                      className="dropdown-item"
+                    >
+                      <div className="dropdown-item-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="dropdown-item-title">{cat.title}</div>
+                        <div className="dropdown-item-desc">{cat.desc}</div>
+                      </div>
+                    </button>
+                  ))}
                 </div>
               )}
             </div>
 
             <button
               onClick={onOpenApply}
-              className="hover:text-black transition-colors cursor-pointer"
+              className="nav-link"
             >
               Apply for tutor
             </button>
           </nav>
 
-          {/* Right Side: Language selector & Login button */}
-          <div className="hidden sm:flex items-center space-x-6">
+          {/* Right Action Controls */}
+          <div className="navbar-actions">
             {/* Language Selector */}
-            <div className="relative" ref={langRef}>
+            <div className="dropdown-container" ref={langRef}>
               <button
                 onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-                className="flex items-center gap-1.5 text-sm font-medium text-gray-800 hover:text-black transition-colors cursor-pointer py-1.5 px-2 rounded-md hover:bg-gray-50"
+                className="lang-btn"
                 aria-label="Select language"
               >
-                <Globe className="w-4 h-4 text-gray-700" />
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="2" y1="12" x2="22" y2="12" />
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
                 <span>{currentLang}</span>
               </button>
 
               {langDropdownOpen && (
-                <div className="absolute top-full right-0 mt-2 w-44 bg-white rounded-xl shadow-lg border border-gray-100 py-1.5 z-50 animate-in fade-in duration-150">
+                <div className="lang-dropdown">
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
@@ -150,12 +147,10 @@ export default function Navbar({ onOpenAuth, onOpenApply, onNavigateSection }) {
                         setCurrentLang(lang.code);
                         setLangDropdownOpen(false);
                       }}
-                      className={`w-full text-left px-4 py-2 text-sm flex items-center justify-between hover:bg-gray-50 transition-colors ${
-                        currentLang === lang.code ? 'font-semibold text-[#0096c7] bg-cyan-50/50' : 'text-gray-700'
-                      }`}
+                      className={`lang-item ${currentLang === lang.code ? 'active' : ''}`}
                     >
                       <span>{lang.name}</span>
-                      <span className="text-xs text-gray-400 font-mono">{lang.code}</span>
+                      <span style={{ fontSize: '0.75rem', opacity: 0.6 }}>{lang.code}</span>
                     </button>
                   ))}
                 </div>
@@ -165,90 +160,67 @@ export default function Navbar({ onOpenAuth, onOpenApply, onNavigateSection }) {
             {/* Login & Sign Up CTA */}
             <button
               onClick={onOpenAuth}
-              className="bg-black text-white hover:bg-gray-800 active:scale-95 transition-all text-sm font-semibold px-5 py-2.5 rounded-md shadow-sm cursor-pointer whitespace-nowrap"
+              className="btn-login"
             >
               Login &amp; sign up
             </button>
-          </div>
 
-          {/* Mobile menu hamburger toggle */}
-          <div className="flex sm:hidden items-center gap-2">
-            <button
-              onClick={() => onOpenAuth()}
-              className="bg-black text-white text-xs font-semibold px-3 py-2 rounded-md"
-            >
-              Login
-            </button>
+            {/* Mobile Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-gray-700 hover:text-black hover:bg-gray-100 transition-colors"
-              aria-label="Toggle navigation menu"
+              className="mobile-toggle"
+              aria-label="Toggle mobile menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                {mobileMenuOpen ? (
+                  <>
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </>
+                ) : (
+                  <>
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <line x1="3" y1="18" x2="21" y2="18" />
+                  </>
+                )}
+              </svg>
             </button>
           </div>
 
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
-      {mobileMenuOpen && (
-        <div className="sm:hidden border-t border-gray-100 bg-white px-4 pt-3 pb-6 space-y-3 animate-in fade-in duration-200">
-          <button
-            onClick={() => {
-              setMobileMenuOpen(false);
-              onNavigateSection('courses');
-            }}
-            className="w-full text-left py-2.5 text-base font-medium text-gray-900 border-b border-gray-50"
-          >
-            Find tutors
-          </button>
-          <button
-            onClick={() => {
-              setMobileMenuOpen(false);
-              onNavigateSection('support');
-            }}
-            className="w-full text-left py-2.5 text-base font-medium text-gray-900 border-b border-gray-50"
-          >
-            Support
-          </button>
-          <button
-            onClick={() => {
-              setMobileMenuOpen(false);
-              onNavigateSection('courses');
-            }}
-            className="w-full text-left py-2.5 text-base font-medium text-gray-900 border-b border-gray-50 flex items-center justify-between"
-          >
-            <span>Learn</span>
-            <ChevronDown className="w-4 h-4 text-gray-500" />
-          </button>
-          <button
-            onClick={() => {
-              setMobileMenuOpen(false);
-              onOpenApply();
-            }}
-            className="w-full text-left py-2.5 text-base font-medium text-gray-900 border-b border-gray-50"
-          >
-            Apply for tutor
-          </button>
-
-          <div className="pt-2 flex items-center justify-between">
-            <div className="flex items-center gap-2 text-sm text-gray-700">
-              <Globe className="w-4 h-4 text-gray-600" />
-              <span>Language: {currentLang}</span>
-            </div>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenAuth();
-              }}
-              className="bg-black text-white text-sm font-semibold px-4 py-2 rounded-md"
-            >
-              Sign Up Free
-            </button>
-          </div>
-        </div>
-      )}
+      {/* Mobile Drawer */}
+      <div className={`mobile-drawer ${mobileMenuOpen ? 'open' : ''}`}>
+        <button
+          onClick={() => {
+            setMobileMenuOpen(false);
+            onNavigateSection('courses');
+          }}
+          className="mobile-nav-link"
+        >
+          Find tutors
+        </button>
+        <button
+          onClick={() => {
+            setMobileMenuOpen(false);
+            onNavigateSection('support');
+          }}
+          className="mobile-nav-link"
+        >
+          Support
+        </button>
+        <button
+          onClick={() => {
+            setMobileMenuOpen(false);
+            onOpenApply();
+          }}
+          className="mobile-nav-link"
+        >
+          Apply for tutor
+        </button>
+      </div>
     </header>
   );
 }

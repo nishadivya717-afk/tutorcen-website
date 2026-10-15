@@ -1,12 +1,10 @@
-import React, { useState, useRef } from 'react';
-import { ArrowLeft, ArrowRight, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
 import CourseCard from './CourseCard.jsx';
+import './CourseSection.css';
 
 export default function CourseSection({ courses, onSelectCourse, searchQuery, onClearSearch }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const containerRef = useRef(null);
 
-  // Filter courses if a search query is active
   const filteredCourses = searchQuery
     ? courses.filter((c) =>
         c.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -15,7 +13,6 @@ export default function CourseSection({ courses, onSelectCourse, searchQuery, on
       )
     : courses;
 
-  // Items visible per screen width
   const maxIndex = Math.max(0, filteredCourses.length - 4);
 
   const handlePrev = () => {
@@ -27,24 +24,22 @@ export default function CourseSection({ courses, onSelectCourse, searchQuery, on
   };
 
   return (
-    <section id="courses" className="py-12 sm:py-16 lg:py-20 bg-white relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="courses" className="course-section">
+      <div className="container">
         
         {/* Header Row */}
-        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-8 sm:mb-12 gap-4">
-          <div className="flex items-center gap-3">
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-black tracking-tight">
-              Top course of study fields
-            </h2>
-          </div>
+        <div className="course-header-row">
+          <h2 className="course-section-title">
+            Top course of study fields
+          </h2>
 
-          <div className="flex items-center gap-4">
+          <div className="course-actions-wrap">
             {searchQuery && (
-              <span className="text-xs sm:text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full flex items-center gap-1.5">
+              <span className="course-filter-badge">
                 Filtered: "{searchQuery}"
                 <button
                   onClick={onClearSearch}
-                  className="font-bold hover:text-black ml-1 text-gray-400"
+                  style={{ fontWeight: 'bold', marginLeft: '4px', cursor: 'pointer' }}
                 >
                   ×
                 </button>
@@ -54,83 +49,75 @@ export default function CourseSection({ courses, onSelectCourse, searchQuery, on
               onClick={() => {
                 if (searchQuery) onClearSearch();
                 else {
-                  // Scroll smoothly or open full catalog view
                   const el = document.getElementById('courses');
-                  el && el.scrollIntoView({ behavior: 'smooth' });
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="text-[#0088ff] hover:text-[#0066cc] font-semibold text-base sm:text-[17px] hover:underline cursor-pointer whitespace-nowrap"
+              className="course-see-all-link"
             >
               See all
             </button>
           </div>
         </div>
 
-        {/* Carousel Container */}
+        {/* Carousel Area */}
         {filteredCourses.length === 0 ? (
-          <div className="text-center py-16 bg-gray-50 rounded-2xl border border-gray-100 p-8">
-            <p className="text-lg font-semibold text-gray-800 mb-2">No courses match your query</p>
-            <p className="text-sm text-gray-500 mb-4">Try searching for keywords like "Data", "Management", "Science", or "Geometry"</p>
+          <div style={{ textAlign: 'center', padding: '60px 20px', background: '#f9fafb', borderRadius: '16px', border: '1px solid #f3f4f6' }}>
+            <p style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '8px' }}>No courses match your query</p>
+            <p style={{ fontSize: '0.9rem', color: '#6b7280', marginBottom: '16px' }}>Try searching for keywords like "Data", "Management", "Science", or "Geometry"</p>
             <button
               onClick={onClearSearch}
-              className="bg-black text-white text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-gray-800 transition-colors"
+              style={{ background: '#000', color: '#fff', fontSize: '0.85rem', fontWeight: '600', padding: '10px 20px', borderRadius: '8px' }}
             >
               Reset Search &amp; Show All Courses
             </button>
           </div>
         ) : (
-          <div className="relative group/carousel">
+          <div className="carousel-wrapper">
             
-            {/* Circular Left Arrow */}
+            {/* Left Circular Arrow */}
             <button
               onClick={handlePrev}
               aria-label="Previous courses"
-              className="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white border border-gray-200/80 shadow-[0_4px_16px_rgba(0,0,0,0.1)] flex items-center justify-center text-gray-800 hover:text-black hover:scale-105 active:scale-95 transition-all cursor-pointer"
+              className="carousel-arrow left"
             >
-              <ArrowLeft className="w-5 h-5 text-gray-700" />
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12" />
+                <polyline points="12 19 5 12 12 5" />
+              </svg>
             </button>
 
-            {/* Circular Right Arrow */}
+            {/* Right Circular Arrow */}
             <button
               onClick={handleNext}
               aria-label="Next courses"
-              className="absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white border border-gray-200/80 shadow-[0_4px_16px_rgba(0,0,0,0.1)] flex items-center justify-center text-gray-800 hover:text-black hover:scale-105 active:scale-95 transition-all cursor-pointer"
+              className="carousel-arrow right"
             >
-              <ArrowRight className="w-5 h-5 text-gray-700" />
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
             </button>
 
-            {/* Cards Grid / Slider */}
-            <div
-              ref={containerRef}
-              className="overflow-hidden px-1 py-4"
-            >
-              <div
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 transition-transform duration-500 ease-out"
-                style={{
-                  transform: `translateX(0%)`
-                }}
-              >
-                {/* We display the current sliding window of 4 courses */}
-                {filteredCourses.slice(currentIndex, currentIndex + 4).map((course) => (
-                  <CourseCard
-                    key={course.id}
-                    course={course}
-                    onSelectCourse={onSelectCourse}
-                  />
-                ))}
-              </div>
+            {/* Cards Grid */}
+            <div className="carousel-grid">
+              {filteredCourses.slice(currentIndex, currentIndex + 4).map((course) => (
+                <CourseCard
+                  key={course.id}
+                  course={course}
+                  onSelectCourse={onSelectCourse}
+                />
+              ))}
             </div>
 
-            {/* Indicator dots for multi-page carousel */}
+            {/* Carousel Dot Indicators */}
             {filteredCourses.length > 4 && (
-              <div className="flex items-center justify-center gap-1.5 mt-8">
+              <div className="carousel-dots">
                 {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
                   <button
                     key={idx}
                     onClick={() => setCurrentIndex(idx)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      currentIndex === idx ? 'w-6 bg-black' : 'w-2 bg-gray-200 hover:bg-gray-400'
-                    }`}
+                    className={`carousel-dot ${currentIndex === idx ? 'active' : ''}`}
                     aria-label={`Go to slide ${idx + 1}`}
                   />
                 ))}
